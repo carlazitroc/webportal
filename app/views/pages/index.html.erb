@@ -13,6 +13,8 @@
                     <%=  truncate(a.body) %>
                 </h3>
                 <p class="post-meta">Created on <%= a.created_at %></p>
+                <p class="post-meta">Created by <%= a.user.username %></p>
+
             </div>
         <% end %>
         <hr />
