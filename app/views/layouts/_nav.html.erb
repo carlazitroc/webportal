@@ -8,16 +8,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <%= link_to 'THE PORTAL', root_path, class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">About</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <li><%= link_to 'Login', new_user_session_path %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <ul class="nav navbar-nav navbar-right">pages_contact
+          <li><%= link_to 'Contact Us', pages_contact_path %></li>
+          <li><%= link_to 'About Us', pages_about_path %></li>
+        <% if !current_user %>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <% else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Edit My Profile', edit_user_registration_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
